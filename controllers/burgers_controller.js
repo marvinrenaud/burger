@@ -4,8 +4,11 @@ var burger = require("../models/burger.js");
 
 router.get("/", function(request, response){
   burger.selectAll(function(data){
-    console.log(data);
-    response.render("index", data);
+    var hbsObject = {
+    burgers: data
+  };
+  console.log(hbsObject);
+  response.render("index", hbsObject);
   });
 });
 
