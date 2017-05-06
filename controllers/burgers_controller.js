@@ -3,7 +3,7 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 router.get("/", function(request, response){
-  burger.selectAll(function(data){
+  burger.all(function(data){
     var hbsObject = {
     burgers: data
   };
@@ -13,12 +13,13 @@ router.get("/", function(request, response){
 });
 
 router.post("/", function(request, response){
-  burger.insertOne([
+  burger.create([
     "burger_name", "devoured"
   ],[
     request.body.burger_name, request.body.devoured
   ], function() {
     response.redirect("/");
+    console.log("the post has happened");
   });
 });
 

@@ -1,21 +1,21 @@
 var orm = require("../config/orm.js");
 
 var burgerModel = {
-  selectAll: function(callBack) {
-    orm.selectAll("burgers", function(response){
-      callBack(response);
+  all: function(cb) {
+    orm.all("burgers", function(response){
+      cb(response);
     });
   },
-  insertOne: function(burgerColumnB, devouredColumnB, burgerNameB, devouredB, callBack) {
-    orm.selectAll("burgers", tableNameB, burgerColumnB, devouredColumnB, burgerNameB, devouredB, function(response){
-      callBack(response);
+  create: function(cols, vals, cb) {
+    orm.create("burgers", cols, vals, function(res) {
+      cb(res);
     });
   },
-  updateOne: function(columnC, newColumnValueC, entryColumnC, entryIdC, callBack) {
-    orm.updateOne("burgers", columnC, newColumnValueC, entryColumnC, entryIdC, function(response){
-      callBack(response);
+  update: function(objColVals, condition, cb) {
+    orm.update("burgers", objColVals, condition, function(res) {
+      cb(res);
     });
-  }
+  },
 };
 
 // Export the database functions for the controller
